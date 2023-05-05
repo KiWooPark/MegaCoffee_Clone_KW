@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--주문하기-->
+        <scene sceneID="ING-bg-NfB">
+            <objects>
+                <viewController storyboardIdentifier="shoppingBasketVC" id="TeK-Vb-syV" customClass="OrderShoppingBasketListViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hSl-AX-niV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K3g-mD-bLV">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="Vvk-dM-gH8">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$매장이름$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmx-7H-Dn9">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="tmx-7H-Dn9" secondAttribute="bottom" id="gKe-v0-iBN"/>
+                                        <constraint firstItem="tmx-7H-Dn9" firstAttribute="leading" secondItem="Vvk-dM-gH8" secondAttribute="leading" constant="20" id="ogl-gZ-FVM"/>
+                                        <constraint firstAttribute="trailing" secondItem="tmx-7H-Dn9" secondAttribute="trailing" constant="20" id="sdq-j5-TTr"/>
+                                        <constraint firstItem="tmx-7H-Dn9" firstAttribute="top" secondItem="Vvk-dM-gH8" secondAttribute="top" id="uRo-IY-feP"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="HkA-fk-xCw" customClass="OrderShoppingBasketHeaderTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HkA-fk-xCw" id="4If-cz-xAu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7A-fG-ajy">
+                                                    <rect key="frame" x="20" y="11.5" width="43.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="H7A-fG-ajy" firstAttribute="centerY" secondItem="4If-cz-xAu" secondAttribute="centerY" id="0nj-cQ-ytI"/>
+                                                <constraint firstItem="H7A-fG-ajy" firstAttribute="leading" secondItem="4If-cz-xAu" secondAttribute="leadingMargin" id="MqP-bY-fsC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="H7A-fG-ajy" id="jeS-NN-7kW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="249" id="QyV-4c-a5n" customClass="OrderShoppingBasketListTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="132" width="414" height="249"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QyV-4c-a5n" id="rav-Yr-Mew">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="249"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="71" id="tJd-0h-jt7">
+                                        <rect key="frame" x="0.0" y="381" width="414" height="71"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tJd-0h-jt7" id="vY7-ZI-iHU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장바구니에 담은 상품은 최대 30일간 보관됩니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eT-Q5-kDj">
+                                                    <rect key="frame" x="72" y="16" width="270.5" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="5eT-Q5-kDj" secondAttribute="bottom" constant="5" id="9YW-LZ-0iT"/>
+                                                <constraint firstItem="5eT-Q5-kDj" firstAttribute="top" secondItem="vY7-ZI-iHU" secondAttribute="topMargin" constant="5" id="ZJF-i8-P0c"/>
+                                                <constraint firstItem="5eT-Q5-kDj" firstAttribute="centerX" secondItem="vY7-ZI-iHU" secondAttribute="centerX" id="iMP-wL-xdg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" rowHeight="248" id="Amw-FB-dup" customClass="OrderShoppingBasketOrderTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="452" width="414" height="248"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Amw-FB-dup" id="a34-7v-XU3">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="248"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DhT-PV-StL">
+                                                    <rect key="frame" x="30" y="107" width="354" height="120"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otL-tY-Q1h">
+                                                            <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
+                                                            <color key="backgroundColor" name="done"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="60" id="qyK-Hh-0Nh"/>
+                                                            </constraints>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title="주문하기"/>
+                                                            <connections>
+                                                                <action selector="tapOrderButton:" destination="TeK-Vb-syV" eventType="touchUpInside" id="bbC-gg-l6W"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXg-PZ-drd">
+                                                            <rect key="frame" x="0.0" y="60" width="354" height="60"/>
+                                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="60" id="v4c-Xw-f3h"/>
+                                                            </constraints>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title="준비중"/>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상품금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHH-lb-k0S">
+                                                    <rect key="frame" x="30" y="61" width="59" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8I-rF-GAS">
+                                                    <rect key="frame" x="332.5" y="53" width="51.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" systemColor="systemRedColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DhT-PV-StL" firstAttribute="top" secondItem="M8I-rF-GAS" secondAttribute="bottom" constant="30" id="BXy-1Z-yE6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DhT-PV-StL" secondAttribute="trailing" constant="10" id="IEz-ig-aMB"/>
+                                                <constraint firstItem="qHH-lb-k0S" firstAttribute="top" secondItem="a34-7v-XU3" secondAttribute="topMargin" constant="50" id="L3J-PM-zHh"/>
+                                                <constraint firstItem="DhT-PV-StL" firstAttribute="leading" secondItem="a34-7v-XU3" secondAttribute="leadingMargin" constant="10" id="TEP-dy-xSI"/>
+                                                <constraint firstItem="qHH-lb-k0S" firstAttribute="leading" secondItem="a34-7v-XU3" secondAttribute="leadingMargin" constant="10" id="UNE-GS-4nl"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="DhT-PV-StL" secondAttribute="bottom" constant="10" id="fFb-Z6-jiu"/>
+                                                <constraint firstItem="DhT-PV-StL" firstAttribute="top" secondItem="qHH-lb-k0S" secondAttribute="bottom" constant="30" id="mRG-LG-sD8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="M8I-rF-GAS" secondAttribute="trailing" constant="10" id="qfH-Rm-ohC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="orderButton" destination="otL-tY-Q1h" id="due-KG-iie"/>
+                                            <outlet property="readyButton" destination="VXg-PZ-drd" id="SaD-E0-q6t"/>
+                                            <outlet property="totalPriceLabel" destination="M8I-rF-GAS" id="AFb-S1-iLG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="TeK-Vb-syV" id="rue-Ls-sh9"/>
+                                    <outlet property="delegate" destination="TeK-Vb-syV" id="fLU-OR-hVB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZxY-be-YTg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K3g-mD-bLV" firstAttribute="top" secondItem="ZxY-be-YTg" secondAttribute="top" id="0mo-Io-jtc"/>
+                            <constraint firstAttribute="bottom" secondItem="K3g-mD-bLV" secondAttribute="bottom" id="1en-vZ-6Ns"/>
+                            <constraint firstItem="ZxY-be-YTg" firstAttribute="trailing" secondItem="K3g-mD-bLV" secondAttribute="trailing" id="4tE-zO-Co5"/>
+                            <constraint firstItem="K3g-mD-bLV" firstAttribute="leading" secondItem="ZxY-be-YTg" secondAttribute="leading" id="WNt-kL-AdJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="주문하기" id="FYR-nZ-BJf">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="uql-CD-z7n">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tapBackButton:" destination="TeK-Vb-syV" id="7aL-wf-Ypj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="shoppingBasketListTableView" destination="K3g-mD-bLV" id="mnW-fA-C2V"/>
+                        <outlet property="storeNameLabel" destination="tmx-7H-Dn9" id="47v-pD-asW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8jM-WX-isJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2822" y="-33"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <namedColor name="done">
+            <color red="0.25882352941176473" green="0.14117647058823529" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
