@@ -7,11 +7,13 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderSearchStoreViewController: UIViewController {
     
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var storeListTableView: UITableView!
     
-    // 메인 데이터
+    // MARK: [Let Or Var] ----------
     var shuffleStores = [StoreModel]()
     var shufflePagingStores = [StoreModel]()
 
@@ -21,6 +23,7 @@ class OrderSearchStoreViewController: UIViewController {
     var hasNextPage = false
     var isFiltering = false
 
+    // MARK: [Override] ----------
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,10 +37,12 @@ class OrderSearchStoreViewController: UIViewController {
         fetching()
     }
         
+    // MARK: [@IBAction] ----------
     @IBAction func tapCloseButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: false)
     }
     
+    // MARK: [Function] ----------
     func fetching() {
         var datas = [StoreModel]()
         var index = 0
@@ -78,6 +83,7 @@ class OrderSearchStoreViewController: UIViewController {
     }
 }
 
+// MARK: [TableView - DataSource] ----------
 extension OrderSearchStoreViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if hasNextPage {
@@ -124,6 +130,7 @@ extension OrderSearchStoreViewController: UITableViewDataSource {
     }
 }
 
+// MARK: [TableView - Delegate] ----------
 extension OrderSearchStoreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isFiltering {
@@ -134,6 +141,7 @@ extension OrderSearchStoreViewController: UITableViewDelegate {
     }
 }
 
+// MARK: [Extention Delegate] ----------
 extension OrderSearchStoreViewController: OrderMoreStoresButtonTableViewCellDelegate {
     func fetchPagingProducts() {
         fetching()

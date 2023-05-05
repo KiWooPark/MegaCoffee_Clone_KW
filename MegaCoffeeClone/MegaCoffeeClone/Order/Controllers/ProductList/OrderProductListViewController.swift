@@ -7,19 +7,23 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderProductListViewController: UIViewController {
 
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var productListCollectionView: UICollectionView!
     @IBOutlet weak var changeStoreButton: UIButton!
     @IBOutlet weak var shoppingBasketBottomButton: UIButton!
     @IBOutlet weak var shoppingCountView: UIView!
     @IBOutlet weak var shoppingCountLabel: UILabel!
     
+    // MARK: [Let Or Var] ----------
     var is1Column = false
     var storeData: StoreModel?
 
     var categoryProducts = [Menu1.MenuModel1]()
     
+    // MARK: [Override] ----------
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +71,7 @@ class OrderProductListViewController: UIViewController {
         
     }
 
+    // MARK: [@IBAction] ----------
     @IBAction func tapBackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -78,6 +83,12 @@ class OrderProductListViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func tapChangeStoreButton(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeStorePopupVC") as? OrderChangeStorePopupViewController else { return }
+        self.present(vc, animated: false)
+    }
+    
+    // MARK: [Function] ----------
     func makeNavigationBarRightButton(imageName: String, action: Selector) -> UIBarButtonItem {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: imageName), for: .normal)
@@ -123,23 +134,6 @@ class OrderProductListViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItems = [exclamationmarkButton, spacer, magnifyingglassButton]
     }
-    
-    @objc func tapMagnifyingglassButton() {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "searchMenuVC") as? OrderSearchProductViewController else { return }
-        self.navigationController?.pushViewController(vc, animated: false)
-    }
-    
-    @objc func tapExclamationmarkButton() {
-        print("2")
-    }
-    
-    
-    @IBAction func tapChangeStoreButton(_ sender: Any) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeStorePopupVC") as? OrderChangeStorePopupViewController else { return }
-        self.present(vc, animated: false)
-    }
-    
-    
     
     func getLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection in
@@ -231,9 +225,19 @@ class OrderProductListViewController: UIViewController {
             
         return section
     }
+    
+    // MARK: [@objc Function] ----------
+    @objc func tapMagnifyingglassButton() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "searchMenuVC") as? OrderSearchProductViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    @objc func tapExclamationmarkButton() {
+        print("2")
+    }
 }
 
- 
+// MARK: [CollectionView - DataSource] ----------
 extension OrderProductListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
@@ -305,6 +309,7 @@ extension OrderProductListViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: [CollectionView - Delegate] ----------
 extension OrderProductListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
@@ -328,6 +333,8 @@ extension OrderProductListViewController: UICollectionViewDelegate {
         }
     }
 }
+
+// MARK: [Extention Delegate] ----------
 
 extension OrderProductListViewController: OrderListHeaderCollectionReusableViewDelegate {
     func changeColumn() {

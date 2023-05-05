@@ -8,12 +8,15 @@
 import UIKit
 import MapKit
 
+// MARK: [Protocol] ----------
 protocol StoreMapTableViewCellDelegate: AnyObject {
     func popupView(storeData: StoreModel)
 }
 
+// MARK: [Class or Struct] ----------
 class StoreMapTableViewCell: UITableViewCell {
-    
+
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var storeMapView: MKMapView!
     @IBOutlet weak var currentLocationButtonView: UIView!
     
@@ -32,18 +35,23 @@ class StoreMapTableViewCell: UITableViewCell {
     @IBOutlet weak var orderButton: UIButton!
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var storeInfoViewHeight: NSLayoutConstraint!
-    
+
+    // MARK: [Let Or Var] ----------
     var storeData: StoreModel?
     weak var delegate: StoreMapTableViewCellDelegate?
     
     var isTouch = false
     
+    // MARK: [Override] ----------
     override func awakeFromNib() {
         super.awakeFromNib()
     
         configLayout()
     }
     
+    // MARK: [@IBAction] ----------
+
+    // MARK: [Function] ----------
     func configLayout() {
         currentLocationButtonView.layer.cornerRadius = 0.5 * currentLocationButtonView.frame.height
         
@@ -81,6 +89,7 @@ class StoreMapTableViewCell: UITableViewCell {
         orderButton.addTarget(self, action: #selector(tapOrderButton(_:)), for: .touchUpInside)
     }
     
+    // MARK: [@objc Function] ----------
     @objc func tapCurrentLocationButton(_ sender: Any) {
         isTouch.toggle()
         

@@ -7,8 +7,9 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class InformationCollectionViewCell: UICollectionViewCell {
     
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var contentLabel: UILabel!
-
 }

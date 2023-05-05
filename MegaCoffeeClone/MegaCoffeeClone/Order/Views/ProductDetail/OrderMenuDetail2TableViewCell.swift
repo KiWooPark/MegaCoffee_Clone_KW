@@ -7,31 +7,32 @@
 
 import UIKit
 
-protocol OrderMenuDetail2TableViewCellDelegate {
+// MARK: [Protocol] ----------
+protocol OrderMenuDetail2TableViewCellDelegate: AnyObject {
     func changeSection2(row: Int, buttonIndex: Int)
     func updateCount(row: Int, index: Int, count: Int)
 }
 
+// MARK: [Class or Struct] ----------
 class OrderMenuDetail2TableViewCell: UITableViewCell {
-
+    
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var optionTitleLabel: UILabel!
     
     @IBOutlet var optionViews: [UIView]!
-    
     @IBOutlet var optionButtons: [UIButton]!
     @IBOutlet var countStackViews: [UIStackView]!
     @IBOutlet var countLabels: [UILabel]!
-    
     @IBOutlet var priceLables: [UILabel]!
     
+    // MARK: [Let Or Var] ----------
     var row = 0
     var totalCount = 0
     var selectedCount = 0
     var optionData: Menu1.MenuModel1.OptionModel1?
+    weak var delegate: OrderMenuDetail2TableViewCellDelegate?
     
-    var delegate: OrderMenuDetail2TableViewCellDelegate?
-    
-    
+    // MARK: [Override] ----------
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -61,6 +62,7 @@ class OrderMenuDetail2TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: [@IBAction] ----------
     @IBAction func tapOptionButton(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
         
@@ -77,7 +79,31 @@ class OrderMenuDetail2TableViewCell: UITableViewCell {
         delegate?.changeSection2(row: row, buttonIndex: button.tag)
     }
     
+    @IBAction func tapMinusButton(_ sender: Any) {
+        guard let button = sender as? UIButton else { return }
+        let count = Int(countLabels[button.tag].text ?? "") ?? 0
+        
+        if count > 1 {
+            countLabels[button.tag].text = "\(count - 1)"
+            selectedCount -= 1
+        }
+        delegate?.updateCount(row: row, index: button.tag, count: Int(countLabels[button.tag].text ?? "") ?? 0)
+    }
     
+    @IBAction func tapPlusButton(_ sender: Any) {
+        guard let button = sender as? UIButton else { return }
+        let count = Int(countLabels[button.tag].text ?? "") ?? 0
+        
+        if selectedCount == totalCount {
+            print("그만")
+        } else {
+            countLabels[button.tag].text = "\(count + 1)"
+            selectedCount += 1
+        }
+        delegate?.updateCount(row: row, index: button.tag, count: Int(countLabels[button.tag].text ?? "") ?? 0)
+    }
+    
+    // MARK: [Function] ----------
     func configOptionButton(optionData: Menu1.MenuModel1.OptionModel1) {
 
         self.optionData = optionData
@@ -103,31 +129,7 @@ class OrderMenuDetail2TableViewCell: UITableViewCell {
             }
         }
     }
-    
-    
-    @IBAction func tapMinusButton(_ sender: Any) {
-        guard let button = sender as? UIButton else { return }
-        let count = Int(countLabels[button.tag].text ?? "") ?? 0
-        
-        if count > 1 {
-            countLabels[button.tag].text = "\(count - 1)"
-            selectedCount -= 1
-        }
-        delegate?.updateCount(row: row, index: button.tag, count: Int(countLabels[button.tag].text ?? "") ?? 0)
-    }
-    
-    @IBAction func tapPlusButton(_ sender: Any) {
-        guard let button = sender as? UIButton else { return }
-        let count = Int(countLabels[button.tag].text ?? "") ?? 0
-        
-        if selectedCount == totalCount {
-            print("그만")
-        } else {
-            countLabels[button.tag].text = "\(count + 1)"
-            selectedCount += 1
-        }
-        delegate?.updateCount(row: row, index: button.tag, count: Int(countLabels[button.tag].text ?? "") ?? 0)
-    }
 }
+
 
 

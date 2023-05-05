@@ -7,15 +7,18 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderShoppingBasketListViewController: UIViewController {
     
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var shoppingBasketListTableView: UITableView!
-    
-    var shoppingBasketList = [ShoppingBasketModel]()
-    var storeData: StoreModel?
-    
     @IBOutlet weak var storeNameLabel: UILabel!
     
+    // MARK: [Let Or Var] ----------
+    var shoppingBasketList = [ShoppingBasketModel]()
+    var storeData: StoreModel?
+
+    // MARK: [Override] ----------
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +43,17 @@ class OrderShoppingBasketListViewController: UIViewController {
 //        return UIImage(contentsOfFile: resultUrl.path) ?? UIImage()
 //    }
     
+    // MARK: [@IBAction] ----------
+    @IBAction func tapBackButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
+    @IBAction func tapOrderButton(_ sender: Any) {
+//        guard let vc = storyboard?.instantiateViewController(withIdentifier: "paymentVC") as? OrderPaymentViewController else { return }
+//        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: [Function] ----------
     // 매장별로 키값 바꾸기
     func getShoppingBasketList() {
         let decoder = PropertyListDecoder()
@@ -59,19 +72,9 @@ class OrderShoppingBasketListViewController: UIViewController {
             print(e.localizedDescription)
         }
     }
-    
-    @IBAction func tapBackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func tapOrderButton(_ sender: Any) {
-        
-//        guard let vc = storyboard?.instantiateViewController(withIdentifier: "paymentVC") as? OrderPaymentViewController else { return }
-//        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
-
+// MARK: [TableView - DataSource] ----------
 extension OrderShoppingBasketListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -123,6 +126,7 @@ extension OrderShoppingBasketListViewController: UITableViewDataSource {
     }
 }
 
+// MARK: [TableView - Delegate] ----------
 extension OrderShoppingBasketListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        
@@ -150,7 +154,7 @@ extension OrderShoppingBasketListViewController: UITableViewDelegate {
     }
 }
 
-
+// MARK: [Extention Delegate] ----------
 extension OrderShoppingBasketListViewController: OrderShoppingBasketListTableViewCellDelegate {
     func deleteMenu(index: Int) {
         shoppingBasketList.remove(at: index)

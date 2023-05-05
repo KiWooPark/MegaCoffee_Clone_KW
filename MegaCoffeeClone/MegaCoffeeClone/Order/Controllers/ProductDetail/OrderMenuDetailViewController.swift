@@ -7,10 +7,13 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderMenuDetailViewController: UIViewController {
     
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var menuDetailTableView: UITableView!
     
+    // MARK: [Let Or Var] ----------
     var shoppingBasketButton: UIButton = {
         let button = ShoppingBasketButton()
         button.tintColor = .black
@@ -32,6 +35,8 @@ class OrderMenuDetailViewController: UIViewController {
     var selectedPriceList = [Int]()
     var recommendMenuPricesList = [Int]()
     
+    // MARK: [Override] ----------
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,8 +77,12 @@ class OrderMenuDetailViewController: UIViewController {
         }
     }
     
+    // MARK: [@IBAction] ----------
+    @IBAction func tapBackButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
-    
+    // MARK: [Function] ----------
     func configShoppingBasketButton() {
         shoppingBasketButton.addTarget(self, action: #selector(tapShoppingBasketButton), for: .touchUpInside)
         
@@ -84,36 +93,16 @@ class OrderMenuDetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = barButtonItem
     }
     
+    // MARK: [@objc Function] ----------
     @objc func tapShoppingBasketButton() {
         let storyBoard = UIStoryboard(name: "ShoppingBasketList", bundle: nil)
         guard let vc = storyBoard.instantiateViewController(withIdentifier: "shoppingBasketVC") as? OrderShoppingBasketListViewController else { return }
         vc.storeData = storeData
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    @IBAction func tapBackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
 }
 
-extension OrderMenuDetailViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return CGFloat.leastNormalMagnitude
-        } else {
-            return 10
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            isOpen.toggle()
-            tableView.reloadSections(IndexSet(integer: 2), with: .fade)
-        }
-    }
-}
-
+// MARK: [TableView - DataSource] ----------
 extension OrderMenuDetailViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
@@ -185,6 +174,26 @@ extension OrderMenuDetailViewController: UITableViewDataSource {
     }
 }
 
+// MARK: [TableView - Delegate] ----------
+extension OrderMenuDetailViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return CGFloat.leastNormalMagnitude
+        } else {
+            return 10
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            isOpen.toggle()
+            tableView.reloadSections(IndexSet(integer: 2), with: .fade)
+        }
+    }
+}
+
+// MARK: [Extention Delegate] ----------
 extension OrderMenuDetailViewController: OrderMenuDetail2TableViewCellDelegate {
     func updateCount(row: Int, index: Int, count: Int) {
         menuData?.option?[row].details?[index].count = count
@@ -322,6 +331,7 @@ extension OrderMenuDetailViewController: OrderMenuDetail4TableViewCellDelegate {
         
     }
     
+    // 추천 상품 만들기
     func createRecomendMenuData() -> [ShoppingBasketModel]? {
 
         var recomendMenus = [ShoppingBasketModel]()
@@ -342,6 +352,7 @@ extension OrderMenuDetailViewController: OrderMenuDetail4TableViewCellDelegate {
         return recomendMenus
     }
     
+    // 상품 데이터 저장하기
     func saveUserDefaults(shoppingBasketData: [ShoppingBasketModel]) {
         // 데이터 저장만
         let encoder = PropertyListEncoder()
@@ -358,13 +369,6 @@ extension OrderMenuDetailViewController: OrderMenuDetail4TableViewCellDelegate {
         do {
             if let data = UserDefaults.standard.value(forKey: "\(storeData?.name ?? "")") as? Data {
                 let result = try decoder.decode([ShoppingBasketModel].self, from: data)
-                print("저장된 데이터",result)
-                
-                // 유저 디폴트 데이터 지우기
-//                for key in UserDefaults.standard.dictionaryRepresentation().keys {
-//                    UserDefaults.standard.removeObject(forKey: key)
-//                }
-                
             } else {
                 print("없음")
             }
@@ -373,6 +377,7 @@ extension OrderMenuDetailViewController: OrderMenuDetail4TableViewCellDelegate {
         }
     }
     
+    // 장바구니에 담긴 상품 가져오기
     func getShoppingBasketMenus() -> [ShoppingBasketModel] {
         
         guard let storeData = storeData,
@@ -391,6 +396,7 @@ extension OrderMenuDetailViewController: OrderMenuDetail4TableViewCellDelegate {
         }
     }
     
+    // 옵션 만들기
     func filterOptions() -> [String] {
         
         var options = [String]()
@@ -405,15 +411,6 @@ extension OrderMenuDetailViewController: OrderMenuDetail4TableViewCellDelegate {
         })
         return options
     }
-    
-//         이미지 불러오기
-//         저장된 URL로
-//                    do {
-//                        let image = try UIImage(contentsOfFile: resultUrl.path)
-//                        print(image)
-//                    } catch {
-//
-//                    }
     
     // 이미지 URL 가져오기
     func saveImage() {

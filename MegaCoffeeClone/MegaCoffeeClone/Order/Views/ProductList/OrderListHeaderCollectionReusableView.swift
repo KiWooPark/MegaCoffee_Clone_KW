@@ -7,20 +7,26 @@
 
 import UIKit
 
-protocol OrderListHeaderCollectionReusableViewDelegate {
+// MARK: [Protocol] ----------
+protocol OrderListHeaderCollectionReusableViewDelegate: AnyObject {
     func changeColumn()
 }
 
 class OrderListHeaderCollectionReusableView: UICollectionReusableView {
         
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var countLabel: UILabel!
-    
     @IBOutlet weak var changeColumnButton: UIButton!
     
-    var delegate: OrderListHeaderCollectionReusableViewDelegate?
+    // MARK: [Let Or Var] ----------
+    weak var delegate: OrderListHeaderCollectionReusableViewDelegate?
     
-    
+    // MARK: [@IBAction] ----------
     @IBAction func tapChangeColumnButton(_ sender: Any) {
         delegate?.changeColumn()
     }
 }
+
+
+
+

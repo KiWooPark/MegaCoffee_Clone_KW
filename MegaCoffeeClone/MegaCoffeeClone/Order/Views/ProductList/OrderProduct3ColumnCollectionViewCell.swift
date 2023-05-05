@@ -7,14 +7,17 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderProductCollectionViewCell: UICollectionViewCell {
     
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var soldOutView: UIView!
     @IBOutlet weak var soldOutLabel: UILabel!
     
+    // MARK: [Override] ----------
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -29,6 +32,7 @@ class OrderProductCollectionViewCell: UICollectionViewCell {
         //productImageView.layer.cornerRadius = productImageView.frame.height / 2
     }
     
+    // MARK: [Function] ----------
     func configData(data: Menu1.MenuModel1) {
         productImageView.image = data.image != nil ? UIImage(named: data.image ?? "") : UIImage()
         

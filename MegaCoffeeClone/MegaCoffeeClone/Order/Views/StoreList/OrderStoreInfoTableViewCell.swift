@@ -7,12 +7,15 @@
 
 import UIKit
 
+// MARK: [Protocol] ----------
 protocol StoreInfoTableViewCellDelegate: AnyObject {
     func updateLikeButton(index: Int)
 }
 
+// MARK: [Class or Struct] ----------
 class StoreInfoTableViewCell: UITableViewCell {
     
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -24,15 +27,16 @@ class StoreInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var likeButtonView: UIView!
     @IBOutlet weak var likeButton: UIButton!
     
+    // MARK: [Let Or Var] ----------
     weak var delegate: StoreInfoTableViewCellDelegate?
     var cellType = SelectedCategory.list
     
     var isSearch = false
     
+    // MARK: [Override] ----------
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
+
     }
     
     override func prepareForReuse() {
@@ -52,7 +56,10 @@ class StoreInfoTableViewCell: UITableViewCell {
         storeOffView.layer.cornerRadius = 0.5 * (storeImageView.image?.size.width ?? 0.0)
         likeButtonView.layer.cornerRadius = likeButtonView.frame.width / 2
     }
+    
+    // MARK: [@IBAction] ----------
 
+    // MARK: [Function] ----------
     func configData(storeData: StoreModel) {
         nameLabel.text = storeData.name
         addressLabel.text = storeData.address
@@ -75,6 +82,7 @@ class StoreInfoTableViewCell: UITableViewCell {
         return tableView.indexPath(for: self)
     }
     
+    // MARK: [@objc Function] ----------
     @objc func tapLikeButton(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
        
@@ -116,4 +124,3 @@ class StoreInfoTableViewCell: UITableViewCell {
         }
     }
 }
-

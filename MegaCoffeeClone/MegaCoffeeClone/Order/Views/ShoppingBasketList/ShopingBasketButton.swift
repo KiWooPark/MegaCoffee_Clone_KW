@@ -8,7 +8,10 @@
 import Foundation
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class ShoppingBasketButton: UIButton {
+    
+    // MARK: [Override] ----------
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -19,6 +22,7 @@ class ShoppingBasketButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: [Function] ----------
     func setup() {
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 30)
         let cartImage = UIImage(systemName: "cart", withConfiguration: imageConfig)
@@ -41,12 +45,14 @@ class ShoppingBasketButton: UIButton {
     }
 }
 
+// MARK: [Class or Struct] ----------
 class ShoppingBasketLabel: UILabel {
     var topInset: CGFloat = 0.0
     var bottomInset: CGFloat = 0.0
     var leftInset: CGFloat = 5.0
     var rightInset: CGFloat = 5.0
     
+    // MARK: [Override] ----------
     override init(frame: CGRect) {
         super.init(frame: frame)
     

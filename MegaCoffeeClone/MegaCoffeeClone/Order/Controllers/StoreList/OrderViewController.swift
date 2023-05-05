@@ -10,8 +10,10 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderViewController: UIViewController {
 
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var orderTableView: UITableView!
     @IBOutlet weak var orderHeaderView: UIView!
     
@@ -26,11 +28,13 @@ class OrderViewController: UIViewController {
     @IBOutlet weak var mapButtonCenterX: NSLayoutConstraint!
     @IBOutlet weak var likeButtonCenterX: NSLayoutConstraint!
     
+    // MARK: [Let Or Var] ----------
     var selectedCategory = SelectedCategory.list
 
     // 프레젠트 스타일 체크 변수(기본값: 푸시)
     var vcPresentationStyle = ViewPresentationStyle.push
 
+    // MARK: [Override] ----------
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,15 +57,7 @@ class OrderViewController: UIViewController {
         }
     }
     
-    func setupOrderHeaderView() {
-        orderHeaderView.backgroundColor = .brown
-        orderHeaderView.frame.size.height = 60
-        
-        let nibName = UINib(nibName: "OrderStoreInfoTableViewCell", bundle: nil)
-        orderTableView.register(nibName, forCellReuseIdentifier: "storeCell")
-        
-    }
-    
+    // MARK: [@IBAction] ----------
     @IBAction func tapCategoryButton(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
         
@@ -93,8 +89,19 @@ class OrderViewController: UIViewController {
             self.orderTableView.reloadData()
         }
     }
+    
+    // MARK: [Function] ----------
+    func setupOrderHeaderView() {
+        orderHeaderView.backgroundColor = .brown
+        orderHeaderView.frame.size.height = 60
+        
+        let nibName = UINib(nibName: "OrderStoreInfoTableViewCell", bundle: nil)
+        orderTableView.register(nibName, forCellReuseIdentifier: "storeCell")
+        
+    }
 }
 
+// MARK: [TableView - DataSource] ----------
 extension OrderViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -163,6 +170,7 @@ extension OrderViewController: UITableViewDataSource {
     }
 }
 
+// MARK: [TableView - Delegate] ----------
 extension OrderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if selectedCategory != .map {
@@ -185,6 +193,7 @@ extension OrderViewController: UITableViewDelegate {
     }
 }
 
+// MARK: [Extention Delegate] ----------
 extension OrderViewController: StoreMapTableViewCellDelegate {
     func popupView(storeData: StoreModel) {
         loadPopupView(storeData: storeData)
@@ -199,6 +208,7 @@ extension OrderViewController: StoreInfoTableViewCellDelegate {
     }
 }
 
+// MARK: [Extention] ----------
 extension UIViewController {
     func loadPopupView(storeData: StoreModel? = nil, topVC: VcType = .select, presentationStyle: ViewPresentationStyle = .push) {
         

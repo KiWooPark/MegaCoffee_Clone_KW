@@ -7,15 +7,20 @@
 
 import UIKit
 
+// MARK: [Enum] ----------
 enum ViewPresentationStyle {
     case push
     case present
 }
 
+// MARK: [Class or Struct] ----------
 class OrderChangeStorePopupViewController: UIViewController {
+
+    // MARK: [@IBOutlet] ----------
 
     @IBOutlet weak var popupView: UIView!
     
+    // MARK: [Override] ----------
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +28,7 @@ class OrderChangeStorePopupViewController: UIViewController {
         popupView.layer.cornerRadius = 10
     }
     
-    
+    // MARK: [@IBAction] ----------
     @IBAction func tapCancelButton(_ sender: Any) {
         self.dismiss(animated: false)
     }

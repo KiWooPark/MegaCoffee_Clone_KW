@@ -7,10 +7,13 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderSearchProductViewController: UIViewController {
 
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var searchProductTableView: UITableView!
     
+    // MARK: [Let Or Var] ----------
     // 더미데이터에서 다시 만든 상품
     var menus = [Menu1.MenuModel1]()
     var searchPagingProducts = [Menu1.MenuModel1]()
@@ -22,7 +25,7 @@ class OrderSearchProductViewController: UIViewController {
     var hasNextPage = false
     var isFiltering = false
     
-    
+    // MARK: [Override] ----------
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +37,12 @@ class OrderSearchProductViewController: UIViewController {
         fetchPaging()
     }
     
+    // MARK: [@IBAction] ----------
+    @IBAction func tapBackButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: false)
+    }
+    
+    // MARK: [Function] ----------
     func configSearchProducts() {
         
         var data = Menu1.fetchMenuData()
@@ -83,13 +92,10 @@ class OrderSearchProductViewController: UIViewController {
             self.searchProductTableView.reloadData()
         }
     }
-
-    
-    @IBAction func tapBackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
-    }
 }
 
+
+// MARK: [TableView - DataSource] ----------
 extension OrderSearchProductViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -135,6 +141,7 @@ extension OrderSearchProductViewController: UITableViewDataSource {
     }
 }
 
+// MARK: [Extention Delegate] ----------
 extension OrderSearchProductViewController: OrderMoreProductsButtonTableViewCellDelegate {
     func fetchPagingProducts() {
         fetchPaging()

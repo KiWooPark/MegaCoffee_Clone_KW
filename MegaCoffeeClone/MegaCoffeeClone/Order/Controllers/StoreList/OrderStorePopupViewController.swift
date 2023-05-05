@@ -7,14 +7,17 @@
 
 import UIKit
 
+// MARK: [Enum] ----------
 enum VcType {
     case select
     case search
     case change
 }
 
+// MARK: [Class or Struct] ----------
 class OrderStorePopupViewController: UIViewController {
     
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var popupView: UIView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,11 +27,13 @@ class OrderStorePopupViewController: UIViewController {
     @IBOutlet weak var orderButton: UIButton!
     @IBOutlet weak var popupViewHeight: NSLayoutConstraint!
     
+    // MARK: [Let Or Var] ----------
     // 데이터 추가시 수정
     var storeData: StoreModel?
     
     var topVC: VcType?
   
+    // MARK: [Override] ----------
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,20 +42,7 @@ class OrderStorePopupViewController: UIViewController {
         popupView.layer.cornerRadius = 20
     }
     
-    func configStoreInfo() {
-        if let storeData = storeData {
-            titleLabel.text = "'\(storeData.name)'에서\n주문하시겠습니까?"
-            
-            contentLabel.text = storeData.isOn ? "주문 확인 후 취소가 불가합니다." : "매장 준비중 입니다."
-            goingToMenuButton.isHidden = storeData.isOn ? true : false
-            
-            popupViewHeight.constant = storeData.isOn ? view.frame.height * 0.6 : view.frame.height * 0.7
-            
-            orderButton.isEnabled = storeData.isOn ? true : false
-            orderButton.backgroundColor = storeData.isOn ? .done() : .gray
-        }
-    }
-    
+    // MARK: [@IBAction] ----------
     @IBAction func tapCloseButton(_ sender: Any) {
         self.dismiss(animated: false)
     }
@@ -96,6 +88,21 @@ class OrderStorePopupViewController: UIViewController {
                     }
                 }
             }
+        }
+    }
+    
+    // MARK: [Function] ----------
+    func configStoreInfo() {
+        if let storeData = storeData {
+            titleLabel.text = "'\(storeData.name)'에서\n주문하시겠습니까?"
+            
+            contentLabel.text = storeData.isOn ? "주문 확인 후 취소가 불가합니다." : "매장 준비중 입니다."
+            goingToMenuButton.isHidden = storeData.isOn ? true : false
+            
+            popupViewHeight.constant = storeData.isOn ? view.frame.height * 0.6 : view.frame.height * 0.7
+            
+            orderButton.isEnabled = storeData.isOn ? true : false
+            orderButton.backgroundColor = storeData.isOn ? .done() : .gray
         }
     }
 }

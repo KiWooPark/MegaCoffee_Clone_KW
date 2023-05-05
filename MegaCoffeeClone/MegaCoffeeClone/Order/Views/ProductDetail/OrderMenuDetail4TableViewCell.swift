@@ -7,15 +7,16 @@
 
 import UIKit
 
-protocol OrderMenuDetail4TableViewCellDelegate {
+// MARK: [Protocol] ----------
+protocol OrderMenuDetail4TableViewCellDelegate: AnyObject {
     func changeSection4(index: Int)
     func putShoppingBasket()
 }
 
+// MARK: [Class or Struct] ----------
 class OrderMenuDetail4TableViewCell: UITableViewCell {
 
-    var delegate: OrderMenuDetail4TableViewCellDelegate?
-
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var menuImageView1: UIImageView!
     @IBOutlet weak var menuImageView2: UIImageView!
     @IBOutlet weak var menuImageView3: UIImageView!
@@ -40,6 +41,10 @@ class OrderMenuDetail4TableViewCell: UITableViewCell {
     @IBOutlet weak var shoppingbasketButton: UIButton!
     @IBOutlet weak var soldOutButton: UIButton!
     
+    // MARK: [Let Or Var] ----------
+    weak var delegate: OrderMenuDetail4TableViewCellDelegate?
+    
+    // MARK: [Override] ----------
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -56,6 +61,35 @@ class OrderMenuDetail4TableViewCell: UITableViewCell {
         soldOutButton.layer.cornerRadius = 10
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+    // MARK: [@IBAction] ----------
+    @IBAction func tapMenuSelectButton(_ sender: Any) {
+        guard let button = sender as? UIButton else { return }
+        delegate?.changeSection4(index: button.tag)
+    }
+    
+    
+    @IBAction func tapDoneButton(_ sender: Any) {
+        print("11")
+    
+    }
+    
+    @IBAction func tapShoppingBasketButton(_ sender: Any) {
+        // 장바구니에 담기만 하면 됨
+        delegate?.putShoppingBasket()
+        
+    }
+    
+    @IBAction func tapSoldOutButton(_ sender: Any) {
+        print("33")
+    }
+    
+    // MARK: [Function] ----------
     func configData(data: [RecomendMenuModel]?, sum: Int) {
         menuImageView1.image = UIImage(named: data?[0].image ?? "")
         menuImageView2.image = UIImage(named: data?[1].image ?? "")
@@ -82,32 +116,5 @@ class OrderMenuDetail4TableViewCell: UITableViewCell {
         indexs[0] == true ? menuSelectButton1.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal) : menuSelectButton1.setImage(UIImage(systemName: "circle"), for: .normal)
         indexs[1] == true ? menuSelectButton2.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal) : menuSelectButton2.setImage(UIImage(systemName: "circle"), for: .normal)
         indexs[2] == true ? menuSelectButton3.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal) : menuSelectButton3.setImage(UIImage(systemName: "circle"), for: .normal)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    @IBAction func tapMenuSelectButton(_ sender: Any) {
-        guard let button = sender as? UIButton else { return }
-        delegate?.changeSection4(index: button.tag)
-    }
-    
-    
-    @IBAction func tapDoneButton(_ sender: Any) {
-        print("11")
-    
-    }
-    
-    @IBAction func tapShoppingBasketButton(_ sender: Any) {
-        // 장바구니에 담기만 하면 됨
-        delegate?.putShoppingBasket()
-        
-    }
-    
-    @IBAction func tapSoldOutButton(_ sender: Any) {
-        print("33")
     }
 }

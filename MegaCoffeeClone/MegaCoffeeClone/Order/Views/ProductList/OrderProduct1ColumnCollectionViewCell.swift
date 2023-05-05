@@ -7,8 +7,10 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderProduct1ColumnCollectionViewCell: UICollectionViewCell {
 
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var productImageView: UIImageView!
     
     @IBOutlet weak var soldOutView: UIView!
@@ -17,6 +19,7 @@ class OrderProduct1ColumnCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    // MARK: [Override] ----------
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -32,6 +35,7 @@ class OrderProduct1ColumnCollectionViewCell: UICollectionViewCell {
         //productImageView.layer.cornerRadius = productImageView.frame.height / 2
     }
     
+    // MARK: [Function] ----------
     func configData(data: Menu1.MenuModel1) {
         productImageView.image = data.image != nil ? UIImage(named: data.image ?? "") : UIImage()
         
@@ -40,5 +44,4 @@ class OrderProduct1ColumnCollectionViewCell: UICollectionViewCell {
         soldOutView.isHidden = data.soldOut ?? false ? false : true
         soldOutLabel.isHidden = data.soldOut ?? false ? false : true
     }
-
 }

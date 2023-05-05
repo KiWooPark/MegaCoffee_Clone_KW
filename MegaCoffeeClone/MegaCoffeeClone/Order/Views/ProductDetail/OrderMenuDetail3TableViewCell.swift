@@ -7,19 +7,23 @@
 
 import UIKit
 
-protocol OrderMenuDetail3TableViewCellDelegate {
+// MARK: [Protocol] ----------
+protocol OrderMenuDetail3TableViewCellDelegate: AnyObject {
     func changeSection3(count: Int)
 }
 
+// MARK: [Class or Struct] ----------
 class OrderMenuDetail3TableViewCell: UITableViewCell {
 
+    // MARK: [@IBOutlet] ----------
     @IBOutlet weak var sumLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     
-    var delegate: OrderMenuDetail3TableViewCellDelegate?
-
+    // MARK: [Let Or Var] ----------
+    weak var delegate: OrderMenuDetail3TableViewCellDelegate?
     var count = 0
     
+    // MARK: [Override] ----------
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,13 +35,7 @@ class OrderMenuDetail3TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configData(count: Int, sum: Int) {
-        self.count = count
-        
-        countLabel.text = "\(count)"
-        sumLabel.text = "\(sum)원"
-    }
-    
+    // MARK: [@IBAction] ----------
     @IBAction func subtractionButton(_ sender: Any) {
         if count > 1 {
             count -= 1
@@ -51,4 +49,14 @@ class OrderMenuDetail3TableViewCell: UITableViewCell {
         countLabel.text = "\(count)"
         delegate?.changeSection3(count: count)
     }
+    
+    // MARK: [Function] ----------
+    func configData(count: Int, sum: Int) {
+        self.count = count
+        
+        countLabel.text = "\(count)"
+        sumLabel.text = "\(sum)원"
+    }
+    
+    
 }

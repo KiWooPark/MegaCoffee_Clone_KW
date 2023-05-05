@@ -7,8 +7,10 @@
 
 import UIKit
 
+// MARK: [Class or Struct] ----------
 class OrderMenuDetail1TableViewCell: UITableViewCell {
 
+    // MARK: [Override] ----------
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
