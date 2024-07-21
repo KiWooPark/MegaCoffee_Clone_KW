@@ -8,7 +8,7 @@
 
 **담당 파트 :** 메가 오더 탭의 전반적인 UI 구현
 
-**노션 링크 :** [Link](https://storm-hosta-944.notion.site/Clone-4e4d183d793441cd95d10f01288b347b?pvs=4)
+**노션 링크 :** [Link](https://storm-hosta-944.notion.site/MegaCoffee-Clone-c17f9e47e0314b33848c0da7178bf42d?pvs=4)
 
 ## 💁 Service introduce
 메가커피 Clone Coding을 통해 UI 구현 능력 향상 및 Git을 활용한 팀원들과의 협업 경험을 쌓고자 해당 프로젝트를 기획하게 되었으며 이 프로젝트에서는 JSON 목업 데이터를 사용하여 실제 API를 호출하지 않고 개발을 진행하였습니다.
